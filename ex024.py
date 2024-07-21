@@ -1,0 +1,2 @@
+cid = str(input('Em qual cidade você nasceu? ')).strip() #dando o strip para anular os eventuais clique na tecla espaco, que o usuario pode dar
+print (cid [:5].upper() == 'SANTO') #usando o upper para deixar tudo em maiusculo e fazer a comparacao, assim o usuario pode digitar de qualquer forma (caixa alta ou baixa ou mesclado)
