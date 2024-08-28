@@ -6,10 +6,10 @@ from time import sleep
 max_win = 0
 print("=-" *10, "Jogo de par ou impar ","=-"*10)
 while True:
-    computador = randint(1,10)
+    computador = randint(0,11)
     n = int(input("Digite o valor: "))
     res = n + computador 
-    cond = str(input("Você quer par ou impar? [P/I] ")).strip().upper()
+    cond = str(input("Você quer par ou impar? [P/I] ")).strip().upper()[0]
     print("1, 2, 3, e já!")
     sleep(1)
     print(f"O computador escolheu {computador}")
@@ -21,12 +21,12 @@ while True:
     if resultado == cond:
         print(f"O jogo deu {res}")
         sleep(1)
-        print("Você venceu!")
+        print("Você venceu! Vamos jogar novamente...")
         max_win += 1
     else:
         print(f"O jogo deu {res}")
         sleep(1)
-        print("Você perdeu!")
+        print("Você perdeu! GAME OVER! ")
         break
 print("FIM DE JOGO ! ! ! ")
 print(f"Você venceu {max_win} vezes seguidas!")
