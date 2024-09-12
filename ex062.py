@@ -9,4 +9,4 @@ while cont <= n:
     t1 = t2
     t2 = t3
     cont += 1
-print (" -> Fim")
+print(" -> Fim")
