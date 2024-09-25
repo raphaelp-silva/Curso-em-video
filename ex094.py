@@ -7,22 +7,28 @@
 # Uma lista com pessoas de idade acima da média
 dados_temp = {}
 dados = []
-mulheres = []
 idade_acima_avg = []
 tot_idade = 0
 while True:
     dados_temp["nome"] = str(input("Digite o nome: "))
     dados_temp["sexo"] = str(input("Digite o sexo [M/F]: ")).upper().strip()[0]
 
-    # Validando se a pessoa é mulher e adicionando-a na lista de mulheres
-    if dados_temp["sexo"] == "F":
-        mulheres.append(dados_temp["nome"])
+    # Validando se a entrada do dado é valida [M/F]
+    while dados_temp["sexo"] not in "MF":
+        dados_temp["sexo"] = (
+            str(input("SEXO INVÁLIDO! TENTE NOVAMENTE! [M/F]: ")).upper().strip()[0])
     dados_temp["idade"] = int(input("Digite a idade: "))
 
     # Copiando o dicionário dados_temp para a lista dados
     dados.append(dados_temp.copy())
 
     resp = str(input("Deseja cadastrar outra pessoa? [S/N]")).upper().strip()[0]
+
+    # Validando se a entrada do dado é valida [S/N]
+    while resp not in "SN":
+        resp = (
+            str(input("RESPOSTA INVÁLIDA, TENTE NOVAMENTE! [S/N]")).upper().strip()[0]
+        )
     if resp == "N":
         break
 
@@ -38,7 +44,19 @@ for i, v in enumerate(dados):
 
 # Exibindo os resultados
 print("-=" * 20)
-print(f"A média de idade foi de: {avg_idade:.2f} anos")
 print(f"Foram cadastrados {len(dados)} pessoas")
-print(f"As mulheres cadastradas foram {mulheres}")
-print(f"As pessoas com idade acima da média foram {idade_acima_avg}")
+print(f"A média de idade foi de: {avg_idade:.2f} anos")
+# Exibindo a lista formatada das mulheres
+print("As mulheres cadastradas foram :", end=" ")
+for p in dados:
+    if p["sexo"] == "F":
+        print(f"{p['nome']} ", end=" ")
+print()
+print("As pessoas com idade acima da média: ")
+for p in dados:
+    if p["idade"] >= avg_idade:
+        print("   ")
+        for k, v in p.items():
+            print(f"{k} = {v}; ", end="")
+print()
+print("FINAL DO PROGRAMA!!!")
